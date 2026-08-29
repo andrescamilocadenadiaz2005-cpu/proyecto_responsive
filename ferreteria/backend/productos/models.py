@@ -31,3 +31,20 @@ class Producto(models.Model):
 
     def __str__(self):
         return self.nombre
+
+
+class Proveedor(models.Model):
+    nombre = models.CharField(max_length=150)
+    telefono = models.CharField(max_length=20, blank=True)
+    email = models.EmailField(blank=True)
+    activo = models.BooleanField(default=True)
+
+
+    class Meta:
+        verbose_name =  'Proveedor'
+        verbose_name_plural =  'Proveedores'
+        ordering = ['nombre']
+
+
+        def __str__(self):
+         return self.nombre

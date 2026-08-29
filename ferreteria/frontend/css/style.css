@@ -1,0 +1,18 @@
+.hero {
+  min-height: 40vh;
+  background: linear-gradient(135deg, #1f2937, #374151);
+}
+
+.card-producto {
+  height: 100%;
+  transition: transform 0.15s ease-in-out;
+}
+
+.card-producto:hover {
+  transform: translateY(-4px);
+}
+
+.card-producto img {
+  height: 180px;
+  object-fit: cover;
+}

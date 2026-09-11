@@ -1,1 +1,26 @@
 hola, cambios para probar el primer commit de github GG.
+
+NOTAS IMPORTANTES: 
+---usar para crear super usuario(tienes que estar en bakcend)---
+python manage.py createsuperuser
+
+---levantar Django(tienes que estar en backend)---
+cd backend
+.\venv\Scripts\Activate.ps1
+python manage.py runserver
+
+---para levantar frontend(tienes que estar en frontend)---
+cd frontend
+python -m http.server 5500
+
+---levantar mysql con docker(desde la raiz del proyecto, proyector_responsive)---
+docker compose --env-file backend/.env up -d
+
+---apagas mysql de docker---
+docker compose --env-file backend/.env down
+
+---detienes Django---
+CTRL C
+
+
+

@@ -6,6 +6,10 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .models import Categoria, Producto, Proveedor
 from .forms import ProveedorForm
 
+from .forms import ProveedorForm
+from .models import Categoria, Producto, Proveedor
+
+
 
 from .models import Categoria, Producto
 from .serializers import CategoriaSerializer, ProductoSerializer
@@ -32,7 +36,11 @@ def health_check(request):
 
 def proveedor_list(request):
     proveedores = Proveedor.objects.all()
+
     return render(request, 'proveedor_list.html', {'proveedores': proveedores})
+
+    return render(request, 'productos/proveedor_list.html', {'proveedores': proveedores})
+
 
 def proveedor_create(request):
     if request.method == 'POST':
@@ -61,4 +69,5 @@ def proveedor_delete(request, pk):
         proveedor.delete()
         return redirect('proveedor_list')
     return render(request, 'productos/proveedor_confirm_delete.html', {'proveedor': proveedor})
+
 

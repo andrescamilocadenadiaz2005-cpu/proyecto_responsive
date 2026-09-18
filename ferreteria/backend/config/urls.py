@@ -19,12 +19,24 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from productos.views import health_check
+from productos.views import (
+    health_check,
+    proveedor_create,
+    proveedor_delete,
+    proveedor_list,
+    proveedor_update,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/health/', health_check, name='health-check'),
     path('api/', include('productos.urls')),
+
+    # Vistas HTML con formularios (CRUD clasico, sin pasar por la API)
+    path('proveedores/', proveedor_list, name='proveedor_list'),
+    path('proveedores/nuevo/', proveedor_create, name='proveedor_create'),
+    path('proveedores/<int:pk>/editar/', proveedor_update, name='proveedor_update'),
+    path('proveedores/<int:pk>/eliminar/', proveedor_delete, name='proveedor_delete'),
 ]
 
 if settings.DEBUG:

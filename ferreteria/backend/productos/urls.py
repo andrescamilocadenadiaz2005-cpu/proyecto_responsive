@@ -5,7 +5,8 @@ from .views import CategoriaViewSet, ProductoViewSet
 from .views import (
     proveedor_list, 
     proveedor_create, 
-    proveedor_update
+    proveedor_update,
+    proveedor_delete
 )
 
 router = DefaultRouter()
@@ -19,5 +20,5 @@ urlpatterns = [
     path('proveedores/', proveedor_list, name='proveedor_list'),
     path('proveedores/create/', proveedor_create, name='proveedor_create'),
     path('proveedores/update/<int:pk>/', proveedor_update, name='proveedor_update'),
-
+     path('proveedores/<int:pk>/eliminar/', proveedor_delete, name='proveedor-delete')
 ]

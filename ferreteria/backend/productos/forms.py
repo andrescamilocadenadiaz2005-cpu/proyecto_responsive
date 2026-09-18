@@ -1,5 +1,14 @@
 from django import forms
-from .models import Proveedor
+from .models import Proveedor, Categoria
+
+#creamos el model de categoria
+class CategoriaForm(forms.ModelForm):
+    class Meta:
+        model = Categoria
+        fields = ['nombre']
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'})
+        }
 
 class ProveedorForm(forms.ModelForm):
     class Meta:

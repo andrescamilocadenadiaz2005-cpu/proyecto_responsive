@@ -13,6 +13,12 @@ python manage.py runserver
 cd frontend
 python -m http.server 5500
 
+-----para poder usar mysql y mirar tablas y asi-----
+docker compose --env-file backend/.env exec mysql mysql -u root -p ferreteria_db
+
+----para salirte del mysql de docker en la terminal----
+exit;
+
 ---levantar mysql con docker(desde la raiz del proyecto, proyector_responsive)---
 docker compose --env-file backend/.env up -d
 

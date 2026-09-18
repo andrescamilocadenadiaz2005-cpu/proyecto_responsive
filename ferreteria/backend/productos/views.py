@@ -3,8 +3,6 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Categoria, Producto, Proveedor
-from .forms import ProveedorForm
 
 from .forms import ProveedorForm
 from .models import Categoria, Producto, Proveedor
@@ -37,7 +35,7 @@ def health_check(request):
 def proveedor_list(request):
     proveedores = Proveedor.objects.all()
 
-    return render(request, 'proveedor_list.html', {'proveedores': proveedores})
+    #return render(request, 'proveedor_list.html', {'proveedores': proveedores})
 
     return render(request, 'productos/proveedor_list.html', {'proveedores': proveedores})
 

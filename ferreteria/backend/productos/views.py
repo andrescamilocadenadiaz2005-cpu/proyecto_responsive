@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import ProveedorForm
+from .forms import ProveedorForm, CategoriaForm
 from .models import Categoria, Producto, Proveedor
 
 
@@ -31,6 +31,10 @@ class ProductoViewSet(viewsets.ModelViewSet):
 def health_check(request):
     """Endpoint simple para verificar que la API esta funcionando."""
     return Response({'status': 'ok', 'app': 'ferreteria-backend'})
+
+#----------------------------
+# FUNCIONES CRUD DE PROVEEDOR
+#----------------------------
 
 def proveedor_list(request):
     proveedores = Proveedor.objects.all()
@@ -68,4 +72,39 @@ def proveedor_delete(request, pk):
         return redirect('proveedor_list')
     return render(request, 'productos/proveedor_confirm_delete.html', {'proveedor': proveedor})
 
+#-------------------------------------
+# FUNCIONES CRUD DE LA TABLA CATEGORIA
+#-------------------------------------
+def categoria_list(request):
+    categorias = Categoria.objects.all()
 
+    return render(request, 'productos/categoria_list.html', {'categorias' : categorias})
+
+def categoria_create(request):
+    if request.method == 'POST':
+        form = CategoriaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('categoria_list')
+    else:
+        form = CategoriaForm()
+    return render(request, 'productos/categoria_form.html', {'form': form})
+
+
+def categoria_update(request, pk):
+    categoria = get_object_or_404(Categoria, pk=pk)
+    if request.method == 'POST':
+        form = CategoriaForm(request.POST, instance=categoria)
+        if form.is_valid():
+            form.save()
+            return redirect('categoria_list')
+    else:
+        form = CategoriaForm(instance=categoria)
+    return render(request, 'productos/categoria_form.html', {'form': form})
+
+def categoria_delete(request, pk):
+    categoria = get_object_or_404(Categoria, pk=pk)
+    if request.method == 'POST':
+        categoria.delete()
+        return redirect('categoria_list')
+    return render(request, 'productos/categoria_confirm_delete.html', {'categoria': categoria})

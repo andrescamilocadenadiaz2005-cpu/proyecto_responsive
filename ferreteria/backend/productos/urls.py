@@ -6,7 +6,11 @@ from .views import (
     proveedor_list, 
     proveedor_create, 
     proveedor_update,
-    proveedor_delete
+    proveedor_delete,
+    categoria_list,
+    categoria_create,
+    categoria_update,
+    categoria_delete
 )
 
 router = DefaultRouter()
@@ -20,5 +24,11 @@ urlpatterns = [
     path('proveedores/', proveedor_list, name='proveedor_list'),
     path('proveedores/create/', proveedor_create, name='proveedor_create'),
     path('proveedores/update/<int:pk>/', proveedor_update, name='proveedor_update'),
-     path('proveedores/<int:pk>/eliminar/', proveedor_delete, name='proveedor-delete')
+    path('proveedores/<int:pk>/eliminar/', proveedor_delete, name='proveedor_delete'),
+
+    #rutas de categorias
+    path('categorias/', categoria_list, name='categoria_list'),
+    path('categorias/create/', categoria_create, name='categoria_create'),
+    path('categorias/update/<int:pk>/', categoria_update, name='categoria_update'),
+    path('categorias/<int:pk>/eliminar/', categoria_delete, name='categoria_delete')
 ]

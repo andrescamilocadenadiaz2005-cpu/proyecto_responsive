@@ -28,7 +28,13 @@ from productos.views import (
     categoria_list,
     categoria_create,
     categoria_update,
-    categoria_delete
+    categoria_delete,
+
+    #clientes
+    cliente_list,
+    cliente_create,
+    cliente_update,
+    cliente_delete
 )
 
 urlpatterns = [
@@ -46,7 +52,13 @@ urlpatterns = [
     path('categorias/', categoria_list, name='categoria_list'),
     path('categorias/nuevo/', categoria_create, name='categoria_create'),
     path('categorias/<int:pk>/editar/', categoria_update, name='categoria_update'),
-    path('categorias/<int:pk>/eliminar/', categoria_delete, name='categoria_delete')
+    path('categorias/<int:pk>/eliminar/', categoria_delete, name='categoria_delete'),
+
+    #rutas de clientes
+    path('clientes/', cliente_list, name='cliente_list'),
+    path('clientes/nuevo/', cliente_create, name='cliente_create'),
+    path('clientes/<int:pk>/editar/', cliente_update, name='cliente_update'),
+    path('clientes/<int:pk>/eliminar/', cliente_delete, name='cliente_delete')
 ]
 
 if settings.DEBUG:

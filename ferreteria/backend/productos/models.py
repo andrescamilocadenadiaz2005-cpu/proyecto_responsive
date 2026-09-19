@@ -1,5 +1,19 @@
 from django.db import models
 
+PLAN_CHOICES = [
+    ('mensual', 'Mensual'),
+    ('trimestral', 'Trimestral'),
+    ('anual', 'Anual'),
+]
+ #Cliente del gimnasio (esto es del parcial kkkk)
+class Cliente(models.Model):
+    nombre = models.CharField(max_length=150)
+    telefono = models.CharField(max_length=20, blank=True)
+    plan = models.CharField(max_length=20, choices=PLAN_CHOICES)
+    activo = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.nombre
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100, unique=True)
